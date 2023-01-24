@@ -1,0 +1,52 @@
+<div id="game">
+  <div class="row">
+    <div class="cell" id="cell-1"></div>
+    <div class="cell" id="cell-2"></div>
+    <div class="cell" id="cell-3"></div>
+  </div>
+  <div class="row">
+    <div class="cell" id="cell-4"></div>
+    <div class="cell" id="cell-5"></div>
+    <div class="cell" id="cell-6"></div>
+  </div>
+  <div class="row">
+    <div class="cell" id="cell-7"></div>
+    <div class="cell" id="cell-8"></div>
+    <div class="cell" id="cell-9"></div>
+  </div>
+</div>
+#game {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.cell {
+  width: 33.33%;
+  height: 33.33%;
+  border: 1px solid black;
+}
+const cells = document.querySelectorAll('.cell');
+let xIsNext = true;
+
+for (let i = 0; i < cells.length; i++) {
+  cells[i].addEventListener('click', handleClick);
+}
+
+function handleClick(e) {
+  const cell = e.target;
+  const currentClass = xIsNext ? 'x' : 'o';
+  placeMark(cell, currentClass);
+  xIsNext = !xIsNext;
+}
+
+function placeMark(cell, currentClass) {
+  cell.classList.add(currentClass);
+}
